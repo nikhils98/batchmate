@@ -1,6 +1,7 @@
 import { CostMatrixRoutePlanner } from "../../route-planner/cost-matrix/cost-matrix-route-planner"
 import { MatrixComputeContext } from "../../route-planner/cost-matrix/matrix-compute-context"
 import { MatrixRouteContext } from "../../route-planner/cost-matrix/matrix-route-context"
+import { Location } from "../../route-planner/common/location"
 
 jest.mock('../../route-planner/cost-matrix/cost-matrix-route-planner')
 
@@ -22,9 +23,19 @@ describe("cost matrix route planner", () => {
 
   describe("plan is invoked", () => {
 
-    it("plan is called once", () => {
-      routePlanner.plan()
+    const origins: Location[] = []
+    const destinations: Location[] = []
+
+    beforeAll(() => {
+      routePlanner.plan(origins, destinations)
+    })
+
+    it("called once", () => {
       expect(mockedRoutePlanner.prototype.plan).toHaveBeenCalledTimes(1)
+    })
+
+    it("called with origins and destinations", () => {
+      expect(mockedRoutePlanner.prototype.plan).toHaveBeenCalledWith(origins, destinations)
     })
   })
 })

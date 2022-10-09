@@ -1,3 +1,5 @@
+import { Location } from "./common/location";
+
 export interface RoutePlanner {
-  plan(): any
+  plan(origins: Location[], destinations: Location[]): any
 }
