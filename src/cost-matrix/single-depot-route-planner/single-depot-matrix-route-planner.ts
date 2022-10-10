@@ -1,11 +1,11 @@
-import { CostMatrix } from "../common/cost-matrix";
-import { Location } from "../common/location";
-import { Route } from "../common/route";
-import { RoutePlanner } from "../route-planner";
-import { MatrixComputeContext } from "./matrix-compute/matrix-compute-context";
-import { MatrixRouteContext } from "./matrix-route/matrix-route-context";
+import { CostMatrix } from "../../common/cost-matrix";
+import { Location } from "../../common/location";
+import { Route } from "../../common/route";
+import { RoutePlanner } from "../../route-planner";
+import { MatrixComputeContext } from "../matrix-compute/matrix-compute-context";
+import { MatrixRouteContext } from "../matrix-route/matrix-route-context";
 
-export class CostMatrixRoutePlanner implements RoutePlanner {
+export class SingleDepotMatrixRoutePlanner implements RoutePlanner {
 
   private matrixRouteContext: MatrixRouteContext
   private matrixComputeContext: MatrixComputeContext

@@ -1,11 +1,11 @@
-import { CostMatrixRoutePlanner } from "../../route-planner/cost-matrix/cost-matrix-route-planner"
-import { MatrixComputeContext } from "../../route-planner/cost-matrix/matrix-compute/matrix-compute-context"
-import { MatrixRouteContext } from "../../route-planner/cost-matrix/matrix-route/matrix-route-context"
-import { Location } from "../../route-planner/common/location"
-import { Route } from "../../route-planner/common/route"
+import { SingleDepotMatrixRoutePlanner } from "./single-depot-matrix-route-planner"
+import { MatrixComputeContext } from "../matrix-compute/matrix-compute-context"
+import { MatrixRouteContext } from "../matrix-route/matrix-route-context"
+import { Location } from "../../common/location"
+import { Route } from "../../common/route"
 
 describe("cost matrix route planner", () => {
-  let routePlanner: CostMatrixRoutePlanner
+  let routePlanner: SingleDepotMatrixRoutePlanner
   let planSpy: jest.SpyInstance
 
   let matrixComputeContext: MatrixComputeContext
@@ -15,7 +15,7 @@ describe("cost matrix route planner", () => {
     matrixComputeContext = new MatrixComputeContext()
     matrixRouteContext = new MatrixRouteContext()
 
-    routePlanner = new CostMatrixRoutePlanner(matrixRouteContext, matrixComputeContext)
+    routePlanner = new SingleDepotMatrixRoutePlanner(matrixRouteContext, matrixComputeContext)
 
     planSpy = jest.spyOn(routePlanner, "plan")
   })
