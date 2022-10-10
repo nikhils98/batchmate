@@ -1,0 +1,1 @@
+export type CostMatrix = number[][]
