@@ -2,12 +2,9 @@ import { CostMatrixRoutePlanner } from "../../route-planner/cost-matrix/cost-mat
 import { MatrixComputeContext } from "../../route-planner/cost-matrix/matrix-compute-context"
 import { MatrixRouteContext } from "../../route-planner/cost-matrix/matrix-route-context"
 import { Location } from "../../route-planner/common/location"
-
-jest.mock('../../route-planner/cost-matrix/cost-matrix-route-planner')
+import { Route } from "../../route-planner/common/route"
 
 describe("cost matrix route planner", () => {
-  const mockedRoutePlanner = jest.mocked(CostMatrixRoutePlanner)
-
   let routePlanner: CostMatrixRoutePlanner
 
   beforeAll(() => {
@@ -16,9 +13,9 @@ describe("cost matrix route planner", () => {
 
     routePlanner = new CostMatrixRoutePlanner(matrixRouteContext, matrixComputeContext)
   })
-  
-  beforeEach(() => {
-    mockedRoutePlanner.mockClear()
+
+  afterEach(() => {
+    jest.restoreAllMocks()
   })
 
   describe("plan is invoked", () => {
@@ -26,16 +23,24 @@ describe("cost matrix route planner", () => {
     const origins: Location[] = []
     const destinations: Location[] = []
 
+    let planSpy: jest.SpyInstance;
+
     beforeAll(() => {
+      planSpy = jest.spyOn(routePlanner, "plan")
       routePlanner.plan(origins, destinations)
     })
 
     it("called once", () => {
-      expect(mockedRoutePlanner.prototype.plan).toHaveBeenCalledTimes(1)
+      expect(planSpy).toHaveBeenCalledTimes(1)
     })
 
     it("called with origins and destinations", () => {
-      expect(mockedRoutePlanner.prototype.plan).toHaveBeenCalledWith(origins, destinations)
+      expect(planSpy).toHaveBeenCalledWith(origins, destinations)
+    })
+
+    it("returns route array", () => {
+      const routes: Route[] = []
+      expect(planSpy).toReturnWith(routes)
     })
   })
 })

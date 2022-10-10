@@ -1,4 +1,5 @@
 import { Location } from "../common/location";
+import { Route } from "../common/route";
 import { RoutePlanner } from "../route-planner";
 import { MatrixComputeContext } from "./matrix-compute-context";
 import { MatrixRouteContext } from "./matrix-route-context";
@@ -15,8 +16,8 @@ export class CostMatrixRoutePlanner implements RoutePlanner {
     this.matrixRouteContext = matrixRouteContext
     this.matrixComputeContext = matrixComputeContext
   }
-  
-  plan(origins: Location[], destinations: Location[]) {
-    throw new Error("Method not implemented.");
+
+  plan(origins: Location[], destinations: Location[]): Route[] {
+    return []
   }
 }
