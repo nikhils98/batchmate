@@ -1,1 +1,1 @@
-export type CostMatrix = number[][]
+export type CostMatrix = number[][];

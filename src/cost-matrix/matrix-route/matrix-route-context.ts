@@ -1,7 +1,7 @@
-import { CostMatrix } from "../../common/cost-matrix";
+import { CostMatrix } from '../../common/cost-matrix';
 
 export class MatrixRouteContext {
   plan(matrix: CostMatrix): number[][] {
-    throw new Error ("Method not implemented")
+    throw new Error('Method not implemented');
   }
 }

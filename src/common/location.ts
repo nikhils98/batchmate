@@ -1,6 +1,6 @@
-import { Coordinates } from "./coordinates"
+import { Point } from './point';
 
 export type Location = {
-  id: string
-  coordinates: Coordinates
-}
+  id: string;
+  point: Point;
+};

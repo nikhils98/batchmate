@@ -1,6 +1,6 @@
-import { Location } from "./location"
+import { Location } from './location';
 
 export type Route = {
-  start: Location
-  stops: Location[]
-}
+  start: Location;
+  stops: Location[];
+};
